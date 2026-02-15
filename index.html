@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Mind | Risk Protocol</title>
+    <title>Business Mind | Systems Online</title>
     <style>
         :root {
             --bg-color: #0a0a0a;
             --text-color: #00ff41;
             --dim-color: #008f11;
-            --alert-color: #ff3333;
             --font-stack: 'Courier Prime', 'Courier New', monospace;
         }
 
@@ -18,20 +17,19 @@
             color: var(--text-color);
             font-family: var(--font-stack);
             margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
         }
 
-        /* CRT Scanline Effect */
+        /* Scanlines */
         body::before {
             content: " ";
             display: block;
             position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
+            top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
             z-index: 2;
             background-size: 100% 2px, 3px 100%;
@@ -39,156 +37,73 @@
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
+            text-align: center;
             z-index: 1;
             border: 1px solid var(--dim-color);
             padding: 40px;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
-        }
-
-        h1, h2, h3 {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 1px solid var(--dim-color);
-            padding-bottom: 10px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
+            max-width: 600px;
+            width: 90%;
         }
 
         h1 {
-            color: var(--text-color);
-            text-shadow: 0 0 5px var(--text-color);
-            font-size: 1.8em;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--text-color);
+        }
+
+        p {
+            color: var(--dim-color);
+            font-size: 1.1em;
             margin-bottom: 40px;
         }
 
-        h2 {
-            font-size: 1.2em;
-            margin-top: 30px;
-            color: #fff;
-        }
-
-        .alert-box {
-            border: 1px solid var(--alert-color);
-            color: var(--alert-color);
-            padding: 15px;
-            margin-bottom: 30px;
-            background: rgba(255, 51, 51, 0.05);
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li::before {
-            content: "> ";
-            color: var(--dim-color);
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .footer {
-            margin-top: 50px;
-            font-size: 0.8em;
-            color: var(--dim-color);
-            text-align: center;
-            border-top: 1px dashed var(--dim-color);
-            padding-top: 20px;
-        }
-
-        a {
+        .btn {
+            display: inline-block;
+            border: 1px solid var(--text-color);
+            padding: 15px 30px;
             color: var(--text-color);
             text-decoration: none;
-            border-bottom: 1px dotted var(--text-color);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        a:hover {
+        .btn:hover {
             background-color: var(--text-color);
             color: var(--bg-color);
+            box-shadow: 0 0 15px var(--text-color);
         }
 
-        /* Blink Animation */
-        .blink {
-            animation: blinker 1s linear infinite;
+        .status {
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: var(--dim-color);
         }
 
-        @keyframes blinker {
-            50% { opacity: 0; }
-        }
+        .blink { animation: blinker 1.5s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div style="text-align: right; font-size: 0.8em; color: var(--dim-color); margin-bottom: 20px;">
-        SYSTEM_STATUS: ONLINE<br>
-        PROTOCOL: RISK_V1.0.4
+    <h1>BUSINESS MIND</h1>
+    <p>// SYSTEMS OPERATIONAL //</p>
+
+    <div style="margin: 30px 0;">
+        <a href="disclaimer.html" class="btn">ACCESS DISCLAIMER</a>
+        <!-- <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed;">SENTINEL FEED [LOCKED]</a> -->
     </div>
 
-    <h1>[BUSINESS MIND] // RISK_PROTOCOL</h1>
-
-    <div class="alert-box">
-        <strong>WARNING: HIGH VOLATILITY DETECTED</strong><br>
-        <span class="blink">>>> INITIATING DISCLAIMER SEQUENCE...</span>
-    </div>
-
-    <h2>01. Important Notice</h2>
-    <ul>
-        <li>Everything posted is for <strong>satire and entertainment purposes only</strong>.</li>
-        <li>This is NOT financial advice.</li>
-        <li>Always do your own research (DYOR) and consult licensed professionals.</li>
-        <li>We are not responsible for financial losses resulting from shared information.</li>
-    </ul>
-
-    <h2>02. High Risk Warning</h2>
-    <ul>
-        <li>Digital assets are highly volatile and unpredictable.</li>
-        <li>Past performance does not guarantee future results.</li>
-        <li>Capital is at risk. Total loss is possible.</li>
-    </ul>
-
-    <h2>03. Market Dynamics</h2>
-    <ul>
-        <li>The crypto market reacts violently to news, regulations, and sentiment.</li>
-        <li>Sudden dumps (crashes) and pumps (spikes) are standard operating procedure.</li>
-        <li>If you cannot afford to lose the money, do not deploy it.</li>
-    </ul>
-
-    <h2>04. Memecoin Specifics</h2>
-    <ul>
-        <li>Memecoins are speculative vehicles built on hype.</li>
-        <li>Risk of "Rug Pulls" (devs vanishing) is extreme.</li>
-        <li>99% of these tokens trend towards zero over time.</li>
-        <li>Treat them as a casino, not an investment strategy.</li>
-    </ul>
-
-    <h2>05. No Insider Status</h2>
-    <ul>
-        <li>Unless stated otherwise, we have no connection to project teams.</li>
-        <li>We do not control outcomes. We analyze public data.</li>
-    </ul>
-
-    <h2>06. Personal Accountability</h2>
-    <ul>
-        <li>You are the sole commander of your capital.</li>
-        <li>Decisions to buy or sell are yours alone.</li>
-        <li>Take responsibility for your own risk management.</li>
-    </ul>
-
-    <div class="footer">
-        SECURE CONNECTION ESTABLISHED<br>
-        SESSION ID: <span id="session-id">LOADING...</span><br>
-        &copy; 2026 BUSINESS MIND. ALL RIGHTS RESERVED.
+    <div class="status">
+        <span class="blink">_WAITING FOR INPUT...</span><br>
+        SECURE CHANNEL ESTABLISHED
     </div>
 </div>
-
-<script>
-    // Generate fake session ID for the vibe
-    document.getElementById('session-id').innerText = 'BM-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-</script>
 
 </body>
 </html>
