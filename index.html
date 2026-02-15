@@ -3,797 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Mind Disclaimer</title>
-    <!-- Load a professional Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>Business Mind | Risk Protocol</title>
     <style>
-        /*
-         * This page uses a colour palette inspired by the Solana ecosystem
-         * to reflect the dark, neon accents of many Solana‑based dApps.
-         */
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #00ff41;
+            --dim-color: #008f11;
+            --alert-color: #ff3333;
+            --font-stack: 'Courier Prime', 'Courier New', monospace;
+        }
+
         body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-stack);
             margin: 0;
-            /* Use Inter font for a modern, professional look */
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0e23;
-            color: #ffffff;
+            padding: 20px;
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        /* Hamburger menu toggle in the upper right corner */
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 30px;
-            height: 22px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        .menu-toggle span {
+
+        /* CRT Scanline Effect */
+        body::before {
+            content: " ";
             display: block;
-            height: 3px;
-            background-color: #ffffff;
-            margin-bottom: 5px;
-            border-radius: 3px;
-        }
-        /* Full‑width drawer overlay for navigation and sections */
-        .drawer {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            /* The drawer is a narrow side panel; its width adapts to the viewport. On mobile, it's up to 80% of the viewport, with a max of 320px and a minimum of 260px. */
-            width: clamp(260px, 80vw, 320px);
-            height: 100%;
-            background-color: #0a0e23;
-            padding: 20px;
-            overflow-y: auto;
-            transition: right 0.3s ease;
-            z-index: 1000;
-        }
-        .drawer.open {
-            right: 0;
-        }
-        .drawer h2 {
-            color: #14f195;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-        .drawer .notice {
-            margin-bottom: 20px;
-        }
-        /* Drawer navigation with vertical orientation */
-        .drawer-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .drawer-nav .nav-link {
-            color: #14f195;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .drawer-nav .nav-link.active {
-            text-decoration: underline;
-        }
-        .drawer-section {
-            display: none;
-        }
-.drawer-section.active {
-    /* Keep drawer sections hidden so that the side drawer only shows the navigation list */
-    display: none;
-}
-
-        /* Hide the old horizontal navigation bar since we use a drawer */
-        .main-nav {
-            display: none !important;
-        }
-
-        /* Language selector styles */
-        .language-selector {
             position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-        .language-selector select {
-            padding: 6px 8px;
-            border-radius: 4px;
-            background-color: #0a0e23;
-            color: #ffffff;
-            border: 1px solid #14f195;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-        }
-        /* Content sections displayed under the nav */
-        .content-section {
-            display: none;
-        }
-        .content-section.active {
-            display: block;
-        }
-        /* Hero section with gradient background and call to action */
-        .hero {
-            background: linear-gradient(90deg, #9945ff 0%, #14f195 100%);
-            padding: 60px 20px;
-            text-align: center;
-            color: #0a0e23;
-        }
-        .hero h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            line-height: 1.3;
-            font-weight: 700;
-        }
-        .hero p {
-            margin: 10px 0 20px;
-            font-size: 1.1rem;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .button-container a {
-            display: inline-block;
-            padding: 12px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        /* Style for inline SVG icons in buttons */
-        .button-container a .icon-svg {
-            width: 1em;
-            height: 1em;
-            margin-right: 8px;
-            vertical-align: -2px;
-        }
-        .button-container a.x {
-            background-color: #14f195;
-            color: #0a0e23;
-        }
-        .button-container a.telegram {
-            background-color: #9945ff;
-            color: #0a0e23;
-        }
-        .button-container a:hover {
-            opacity: 0.8;
-        }
-        .notice {
-            /* Card-like styling for each disclaimer section */
-            background-color: #101a28;
-            border-left: 4px solid #14f195;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
-        .notice h2 {
-            margin-top: 0;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #14f195;
-        }
-        .notice h2 .emoji {
-            font-size: 1.5rem;
-        }
-        .notice ul {
-            margin: 10px 0 0 0;
-            padding-left: 20px;
-        }
-        .notice ul li {
-            margin-bottom: 8px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
         }
 
-        /* Card component for each disclaimer section */
-        .card {
-            background-color: #101a28;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            border: 1px solid var(--dim-color);
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
         }
-        .card h2 {
-            display: flex;
-            align-items: center;
-            font-size: 1.4rem;
+
+        h1, h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--dim-color);
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--text-color);
+            text-shadow: 0 0 5px var(--text-color);
+            font-size: 1.8em;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            margin-top: 30px;
+            color: #fff;
+        }
+
+        .alert-box {
+            border: 1px solid var(--alert-color);
+            color: var(--alert-color);
+            padding: 15px;
+            margin-bottom: 30px;
+            background: rgba(255, 51, 51, 0.05);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li::before {
+            content: "> ";
+            color: var(--dim-color);
+        }
+
+        li {
             margin-bottom: 10px;
-            color: #ffffff;
         }
-        .card h2 .emoji {
-            margin-right: 8px;
-            font-size: 1.4rem;
-        }
-        .card ul {
-            margin: 0;
-            padding-left: 20px;
-            list-style: disc;
-            color: #d0d0d0;
-        }
-        .card ul li {
-            margin-bottom: 8px;
-        }
-        footer {
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: var(--dim-color);
             text-align: center;
-            padding: 20px;
-            font-size: 0.8rem;
-            color: #8e8e8e;
+            border-top: 1px dashed var(--dim-color);
+            padding-top: 20px;
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-color);
+        }
+
+        a:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        /* Blink Animation */
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <header class="hero">
-        <h1 id="hero-title" data-i18n="hero_title">Essential Risk Information</h1>
-        <p id="hero-subtitle" data-i18n="hero_subtitle">for cryptocurrency and memecoin investments</p>
-        <div class="button-container">
-            <a href="https://x.com/_business_mind_?s=21" class="x" id="btn-x">
-                <!-- Simple X icon drawn with lines -->
-                <svg class="icon-svg" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="3" y1="3" x2="13" y2="13" stroke="currentColor" stroke-width="2"/>
-                    <line x1="13" y1="3" x2="3" y2="13" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                <span data-i18n="btn_x">Follow me on X</span>
-            </a>
-            <a href="https://t.me/Business_Mind_Alpha" class="telegram" id="btn-telegram">
-                <!-- Simple paper-plane icon inside a circle -->
-                <svg class="icon-svg" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <!-- outer circle uses current color -->
-                    <circle cx="8" cy="8" r="8" fill="currentColor"/>
-                    <!-- plane path is filled with page background colour to contrast -->
-                    <path d="M5 8 L11 5 L9.5 11 L7 9 L9 9 L9.5 11 Z" fill="#0a0e23"/>
-                </svg>
-                <span data-i18n="btn_telegram">Join my Telegram Alpha Group</span>
-            </a>
-        </div>
-        <!-- Language selector placed in the hero to allow visitors to pick a language manually -->
-        <div class="language-selector">
-            <select id="lang-select" aria-label="Select language">
-                <option value="en">English</option>
-                <option value="de">Deutsch</option>
-                <!-- Additional languages can be added here -->
-            </select>
-        </div>
-    </header>
-    <!-- Hamburger menu icon -->
-    <div class="menu-toggle" onclick="toggleDrawer()">
-        <span></span>
-        <span></span>
-        <span></span>
+
+<div class="container">
+    <div style="text-align: right; font-size: 0.8em; color: var(--dim-color); margin-bottom: 20px;">
+        SYSTEM_STATUS: ONLINE<br>
+        PROTOCOL: RISK_V1.0.4
     </div>
 
-    <!-- Full-screen drawer containing the navigation and sections -->
-    <div id="drawer" class="drawer">
-        <h2 id="drawer-title" data-i18n="menu_title">Menu</h2>
-        <nav class="drawer-nav">
-            <a href="#" class="nav-link" data-section="disclaimer" data-i18n="nav_disclaimer">Disclaimer</a>
-            <a href="#" class="nav-link" data-section="axiom" data-i18n="nav_axiom">Axiom Exchange</a>
-        </nav>
-        <!-- Disclaimer section inside drawer -->
-        <div id="section-disclaimer" class="drawer-section active">
-            <!-- Important notice section -->
-            <div class="notice" id="important-notice-drawer">
-                <h2><span class="emoji">🎭</span> <span data-i18n="important_notice_title">Important Notice</span></h2>
-                <ul>
-                    <li data-i18n="important_notice_1">Everything I post should be viewed as satire and entertainment only. This is not financial advice.</li>
-                    <li data-i18n="important_notice_2">You should always do your own research (DYOR) and consult with licensed financial professionals before making any investment decisions.</li>
-                    <li data-i18n="important_notice_3">I am not responsible for any financial losses or gains resulting from any information shared.</li>
-                </ul>
-            </div>
-            <!-- High risk investment warning -->
-            <div class="notice" id="high-risk-drawer">
-                <h2><span class="emoji">⚠️</span> <span data-i18n="high_risk_title">High Risk Investment Warning</span></h2>
-                <ul>
-                    <li data-i18n="high_risk_1">This disclaimer contains critical risk information that could affect your financial decisions.</li>
-                </ul>
-            </div>
-            <!-- Market volatility notice -->
-            <div class="notice" id="market-volatility-drawer">
-                <h2><span class="emoji">🚨</span> <span data-i18n="market_volatility_title">Market Volatility Notice</span></h2>
-                <ul>
-                    <li data-i18n="market_volatility_1">Digital assets, including cryptocurrencies, often experience rapid and unpredictable price changes.</li>
-                    <li data-i18n="market_volatility_2">Just because a token did well before doesn’t mean it will again. Some may pump, others may completely crash.</li>
-                    <li data-i18n="market_volatility_3">Always take time to review project fundamentals before putting any money in.</li>
-                </ul>
-            </div>
-            <!-- Price fluctuations -->
-            <div class="notice" id="price-fluctuations-drawer">
-                <h2><span class="emoji">📉</span> <span data-i18n="price_fluctuations_title">Price Fluctuations</span></h2>
-                <ul>
-                    <li data-i18n="price_fluctuations_1">The crypto space is extremely reactive to news, regulations, tech updates, and public sentiment.</li>
-                    <li data-i18n="price_fluctuations_2">Sudden dumps or spikes are common and can lead to serious financial losses.</li>
-                    <li data-i18n="price_fluctuations_3">If you’re unsure, talk to a licensed financial advisor before you invest.</li>
-                </ul>
-            </div>
-            <!-- General risk disclosure -->
-            <div class="notice" id="general-risk-drawer">
-                <h2><span class="emoji">⚠️</span> <span data-i18n="general_risk_title">General Risk Disclosure</span></h2>
-                <ul>
-                    <li data-i18n="general_risk_1">Crypto carries high risk and comes with no guarantees.</li>
-                    <li data-i18n="general_risk_2">You could lose part or all of your investment.</li>
-                    <li data-i18n="general_risk_3">The industry faces ongoing issues with scams, security exploits, and market manipulation.</li>
-                    <li data-i18n="general_risk_4">Never invest more than you’re prepared to lose, and always DYOR (do your own research).</li>
-                </ul>
-            </div>
-            <!-- About promotional content -->
-            <div class="notice" id="promo-content-drawer">
-                <h2><span class="emoji">📣</span> <span data-i18n="promo_content_title">About Promotional Content</span></h2>
-                <ul>
-                    <li data-i18n="promo_content_1">Any marketing, sponsored posts, or token shoutouts should not be taken as endorsements or financial advice.</li>
-                    <li data-i18n="promo_content_2">Evaluate the source and motives behind promotional messages. Do your own digging before trusting anything.</li>
-                </ul>
-            </div>
-            <!-- Regulatory factors -->
-            <div class="notice" id="regulatory-factors-drawer">
-                <h2><span class="emoji">📜</span> <span data-i18n="regulatory_factors_title">Regulatory Factors</span></h2>
-                <ul>
-                    <li data-i18n="regulatory_factors_1">Laws around crypto change depending on where you live.</li>
-                    <li data-i18n="regulatory_factors_2">Understand the rules in your country before buying, selling, or promoting crypto assets.</li>
-                    <li data-i18n="regulatory_factors_3">It’s your responsibility to comply with any regional requirements or reporting obligations.</li>
-                </ul>
-            </div>
-            <!-- Personal accountability -->
-            <div class="notice" id="personal-accountability-drawer">
-                <h2><span class="emoji">👤</span> <span data-i18n="personal_accountability_title">Personal Accountability</span></h2>
-                <ul>
-                    <li data-i18n="personal_accountability_1">All decisions to invest are made at your own risk.</li>
-                    <li data-i18n="personal_accountability_2">You’re the only one responsible for the outcome of your actions.</li>
-                    <li data-i18n="personal_accountability_3">It’s smart to assess your own financial situation and risk tolerance before jumping into any project.</li>
-                </ul>
-            </div>
-            <!-- No promises or profit guarantees -->
-            <div class="notice" id="no-promises-drawer">
-                <h2><span class="emoji">❌</span> <span data-i18n="no_promises_title">No Promises or Profit Guarantees</span></h2>
-                <ul>
-                    <li data-i18n="no_promises_1">There’s no promise of gains from anything mentioned here.</li>
-                    <li data-i18n="no_promises_2">Past wins don’t predict future performance — losses are always possible.</li>
-                    <li data-i18n="no_promises_3">Treat all content here as speculative.</li>
-                </ul>
-            </div>
-            <!-- Not an insider -->
-            <div class="notice" id="not-insider-drawer">
-                <h2><span class="emoji">🚫</span> <span data-i18n="not_insider_title">Not an Insider</span></h2>
-                <ul>
-                    <li data-i18n="not_insider_1">Unless specifically stated, I have no inside connection to the teams or devs behind any project I talk about.</li>
-                    <li data-i18n="not_insider_2">I don’t control project outcomes — I just post and share public info.</li>
-                </ul>
-            </div>
-            <!-- Education only -->
-            <div class="notice" id="education-only-drawer">
-                <h2><span class="emoji">📚</span> <span data-i18n="education_only_title">Education Only</span></h2>
-                <ul>
-                    <li data-i18n="education_only_1">Everything shared here is meant for learning and awareness — not professional financial guidance.</li>
-                    <li data-i18n="education_only_2">If you’re making big money decisions, consult someone licensed in finance.</li>
-                </ul>
-            </div>
-            <!-- High risk of complete loss -->
-            <div class="notice" id="complete-loss-drawer">
-                <h2><span class="emoji">💀</span> <span data-i18n="complete_loss_title">High Risk of Complete Loss</span></h2>
-                <ul>
-                    <li data-i18n="complete_loss_1">Especially with memecoins, losing everything is possible — and often happens.</li>
-                    <li data-i18n="complete_loss_2">These tokens are extremely volatile and often go to zero fast.</li>
-                    <li data-i18n="complete_loss_3">Only use money you’re okay walking away from.</li>
-                </ul>
-            </div>
-            <!-- Designed for experienced traders -->
-            <div class="notice" id="experienced-traders-drawer">
-                <h2><span class="emoji">🧠</span> <span data-i18n="experienced_traders_title">Designed for Experienced Traders</span></h2>
-                <ul>
-                    <li data-i18n="experienced_traders_1">This page is made for people who already understand how crypto works.</li>
-                    <li data-i18n="experienced_traders_2">If you’re new here, tread carefully and get help from someone with experience.</li>
-                </ul>
-            </div>
-            <!-- Memecoins specific risk -->
-            <div class="notice" id="memecoins-specific-drawer">
-                <h2><span class="emoji">🧪</span> <span data-i18n="memecoins_specific_title">Memecoins Specific Risk</span></h2>
-                <ul>
-                    <li data-i18n="memecoins_specific_1">Meme tokens are built around hype and rarely last long. Most die fast and go to zero.</li>
-                    <li data-i18n="memecoins_specific_2">Project devs can vanish, launch anonymously, or rug at any moment.</li>
-                    <li data-i18n="memecoins_specific_3">Community‑driven hype (especially on Telegram and X) is often exaggerated — don’t take it all literally.</li>
-                    <li data-i18n="memecoins_specific_4">Always approach with skepticism. These tokens are not long‑term financial vehicles — they’re speculative entertainment at best.</li>
-                </ul>
-            </div>
-            <!-- Final words -->
-            <div class="notice" id="final-words-drawer">
-                <h2><span class="emoji">✅</span> <span data-i18n="final_words_title">Final Words</span></h2>
-                <ul>
-                    <li data-i18n="final_words_1">Crypto investing carries real risks. Don’t act on emotion or hype.</li>
-                    <li data-i18n="final_words_2">This page exists to help you stay informed — not to replace real financial advice.</li>
-                    <li data-i18n="final_words_3">Come back and review this regularly. The space moves fast, and so do the risks.</li>
-                </ul>
-            </div>
-        </div><!-- end of disclaimer section in drawer -->
-        <!-- Axiom Exchange section inside drawer -->
-        <div id="section-axiom" class="drawer-section">
-            <div class="notice">
-                <h2><span class="emoji">💼</span> <span data-i18n="axiom_title">Axiom Exchange</span></h2>
-                <!-- Detailed description of Axiom Exchange in multiple paragraphs -->
-                <p data-i18n="axiom_p1"></p>
-                <p data-i18n="axiom_p2"></p>
-                <p><a href="https://axiom.trade/@business" target="_blank" class="x" id="axiom-link" data-i18n="axiom_link_text">Join Axiom Exchange</a></p>
-            </div>
-        </div><!-- end of Axiom section in drawer -->
-    </div><!-- end of drawer -->
-    <!-- Main navigation for sections -->
-    <nav class="main-nav">
-        <a href="#" class="nav-link" data-section="disclaimer" data-i18n="nav_disclaimer">Disclaimer</a>
-        <a href="#" class="nav-link" data-section="axiom" data-i18n="nav_axiom">Axiom Exchange</a>
-    </nav>
-    <!-- Disclaimer section (default) -->
-    <div id="section-disclaimer" class="content-section">
-        <!-- Important notice section -->
-        <div class="notice" id="important-notice">
-            <h2><span class="emoji">🎭</span> <span data-i18n="important_notice_title">Important Notice</span></h2>
-            <ul>
-                <li data-i18n="important_notice_1">Everything I post should be viewed as satire and entertainment only. This is not financial advice.</li>
-                <li data-i18n="important_notice_2">You should always do your own research (DYOR) and consult with licensed financial professionals before making any investment decisions.</li>
-                <li data-i18n="important_notice_3">I am not responsible for any financial losses or gains resulting from any information shared.</li>
-            </ul>
-        </div>
-        <!-- High risk investment warning -->
-        <div class="notice" id="high-risk">
-            <h2><span class="emoji">⚠️</span> <span data-i18n="high_risk_title">High Risk Investment Warning</span></h2>
-            <ul>
-                <li data-i18n="high_risk_1">This disclaimer contains critical risk information that could affect your financial decisions.</li>
-            </ul>
-        </div>
-        <!-- Market volatility notice -->
-        <div class="notice" id="market-volatility">
-            <h2><span class="emoji">🚨</span> <span data-i18n="market_volatility_title">Market Volatility Notice</span></h2>
-            <ul>
-                <li data-i18n="market_volatility_1">Digital assets, including cryptocurrencies, often experience rapid and unpredictable price changes.</li>
-                <li data-i18n="market_volatility_2">Just because a token did well before doesn’t mean it will again. Some may pump, others may completely crash.</li>
-                <li data-i18n="market_volatility_3">Always take time to review project fundamentals before putting any money in.</li>
-            </ul>
-        </div>
-        <!-- Price fluctuations -->
-        <div class="notice" id="price-fluctuations">
-            <h2><span class="emoji">📉</span> <span data-i18n="price_fluctuations_title">Price Fluctuations</span></h2>
-            <ul>
-                <li data-i18n="price_fluctuations_1">The crypto space is extremely reactive to news, regulations, tech updates, and public sentiment.</li>
-                <li data-i18n="price_fluctuations_2">Sudden dumps or spikes are common and can lead to serious financial losses.</li>
-                <li data-i18n="price_fluctuations_3">If you’re unsure, talk to a licensed financial advisor before you invest.</li>
-            </ul>
-        </div>
-        <!-- General risk disclosure -->
-        <div class="notice" id="general-risk">
-            <h2><span class="emoji">⚠️</span> <span data-i18n="general_risk_title">General Risk Disclosure</span></h2>
-            <ul>
-                <li data-i18n="general_risk_1">Crypto carries high risk and comes with no guarantees.</li>
-                <li data-i18n="general_risk_2">You could lose part or all of your investment.</li>
-                <li data-i18n="general_risk_3">The industry faces ongoing issues with scams, security exploits, and market manipulation.</li>
-                <li data-i18n="general_risk_4">Never invest more than you’re prepared to lose, and always DYOR (do your own research).</li>
-            </ul>
-        </div>
-        <!-- About promotional content -->
-        <div class="notice" id="promo-content">
-            <h2><span class="emoji">📣</span> <span data-i18n="promo_content_title">About Promotional Content</span></h2>
-            <ul>
-                <li data-i18n="promo_content_1">Any marketing, sponsored posts, or token shoutouts should not be taken as endorsements or financial advice.</li>
-                <li data-i18n="promo_content_2">Evaluate the source and motives behind promotional messages. Do your own digging before trusting anything.</li>
-            </ul>
-        </div>
-        <!-- Regulatory factors -->
-        <div class="notice" id="regulatory-factors">
-            <h2><span class="emoji">📜</span> <span data-i18n="regulatory_factors_title">Regulatory Factors</span></h2>
-            <ul>
-                <li data-i18n="regulatory_factors_1">Laws around crypto change depending on where you live.</li>
-                <li data-i18n="regulatory_factors_2">Understand the rules in your country before buying, selling, or promoting crypto assets.</li>
-                <li data-i18n="regulatory_factors_3">It’s your responsibility to comply with any regional requirements or reporting obligations.</li>
-            </ul>
-        </div>
-        <!-- Personal accountability -->
-        <div class="notice" id="personal-accountability">
-            <h2><span class="emoji">👤</span> <span data-i18n="personal_accountability_title">Personal Accountability</span></h2>
-            <ul>
-                <li data-i18n="personal_accountability_1">All decisions to invest are made at your own risk.</li>
-                <li data-i18n="personal_accountability_2">You’re the only one responsible for the outcome of your actions.</li>
-                <li data-i18n="personal_accountability_3">It’s smart to assess your own financial situation and risk tolerance before jumping into any project.</li>
-            </ul>
-        </div>
-        <!-- No promises or profit guarantees -->
-        <div class="notice" id="no-promises">
-            <h2><span class="emoji">❌</span> <span data-i18n="no_promises_title">No Promises or Profit Guarantees</span></h2>
-            <ul>
-                <li data-i18n="no_promises_1">There’s no promise of gains from anything mentioned here.</li>
-                <li data-i18n="no_promises_2">Past wins don’t predict future performance — losses are always possible.</li>
-                <li data-i18n="no_promises_3">Treat all content here as speculative.</li>
-            </ul>
-        </div>
-        <!-- Not an insider -->
-        <div class="notice" id="not-insider">
-            <h2><span class="emoji">🚫</span> <span data-i18n="not_insider_title">Not an Insider</span></h2>
-            <ul>
-                <li data-i18n="not_insider_1">Unless specifically stated, I have no inside connection to the teams or devs behind any project I talk about.</li>
-                <li data-i18n="not_insider_2">I don’t control project outcomes — I just post and share public info.</li>
-            </ul>
-        </div>
-        <!-- Education only -->
-        <div class="notice" id="education-only">
-            <h2><span class="emoji">📚</span> <span data-i18n="education_only_title">Education Only</span></h2>
-            <ul>
-                <li data-i18n="education_only_1">Everything shared here is meant for learning and awareness — not professional financial guidance.</li>
-                <li data-i18n="education_only_2">If you’re making big money decisions, consult someone licensed in finance.</li>
-            </ul>
-        </div>
-        <!-- High risk of complete loss -->
-        <div class="notice" id="complete-loss">
-            <h2><span class="emoji">💀</span> <span data-i18n="complete_loss_title">High Risk of Complete Loss</span></h2>
-            <ul>
-                <li data-i18n="complete_loss_1">Especially with memecoins, losing everything is possible — and often happens.</li>
-                <li data-i18n="complete_loss_2">These tokens are extremely volatile and often go to zero fast.</li>
-                <li data-i18n="complete_loss_3">Only use money you’re okay walking away from.</li>
-            </ul>
-        </div>
-        <!-- Designed for experienced traders -->
-        <div class="notice" id="experienced-traders">
-            <h2><span class="emoji">🧠</span> <span data-i18n="experienced_traders_title">Designed for Experienced Traders</span></h2>
-            <ul>
-                <li data-i18n="experienced_traders_1">This page is made for people who already understand how crypto works.</li>
-                <li data-i18n="experienced_traders_2">If you’re new here, tread carefully and get help from someone with experience.</li>
-            </ul>
-        </div>
-        <!-- Memecoins specific risk -->
-        <div class="notice" id="memecoins-specific">
-            <h2><span class="emoji">🧪</span> <span data-i18n="memecoins_specific_title">Memecoins Specific Risk</span></h2>
-            <ul>
-                <li data-i18n="memecoins_specific_1">Meme tokens are built around hype and rarely last long. Most die fast and go to zero.</li>
-                <li data-i18n="memecoins_specific_2">Project devs can vanish, launch anonymously, or rug at any moment.</li>
-                <li data-i18n="memecoins_specific_3">Community‑driven hype (especially on Telegram and X) is often exaggerated — don’t take it all literally.</li>
-                <li data-i18n="memecoins_specific_4">Always approach with skepticism. These tokens are not long‑term financial vehicles — they’re speculative entertainment at best.</li>
-            </ul>
-        </div>
-        <!-- Final words -->
-        <div class="notice" id="final-words">
-            <h2><span class="emoji">✅</span> <span data-i18n="final_words_title">Final Words</span></h2>
-            <ul>
-                <li data-i18n="final_words_1">Crypto investing carries real risks. Don’t act on emotion or hype.</li>
-                <li data-i18n="final_words_2">This page exists to help you stay informed — not to replace real financial advice.</li>
-                <li data-i18n="final_words_3">Come back and review this regularly. The space moves fast, and so do the risks.</li>
-            </ul>
-        </div><!-- end of final words notice -->
-        </div><!-- end of disclaimer section -->
-        <!-- Axiom Exchange section -->
-        <div id="section-axiom" class="content-section">
-            <div class="notice">
-                <h2><span class="emoji">💼</span> <span data-i18n="axiom_title">Axiom Exchange</span></h2>
-                <!-- Detailed description of Axiom Exchange in multiple paragraphs -->
-                <p data-i18n="axiom_p1"></p>
-                <p data-i18n="axiom_p2"></p>
-                <p><a href="https://axiom.trade/@business" target="_blank" class="x" id="axiom-link" data-i18n="axiom_link_text">Join Axiom Exchange</a></p>
-            </div>
-        </div><!-- end of Axiom section -->
-    <footer>
-        © 2025 Business Mind. All rights reserved. This information is provided for educational purposes only and does not constitute financial advice.
-    </footer>
-    <script>
-        // Toggle the drawer open and closed
-        function toggleDrawer() {
-            const drawer = document.getElementById('drawer');
-            drawer.classList.toggle('open');
-        }
+    <h1>[BUSINESS MIND] // RISK_PROTOCOL</h1>
 
-        // Show a specific content section and update navigation state
-        function showSection(id) {
-            // Hide all content sections
-            document.querySelectorAll('.content-section').forEach((section) => {
-                section.classList.remove('active');
-            });
-            // Show the requested content section
-            // Only look for the section inside the main content area (not inside the drawer)
-            const targetContent = document.querySelector('.content-section#section-' + id);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
-            // Update nav link active state
-            document.querySelectorAll('.drawer-nav .nav-link').forEach((link) => {
-                if (link.getAttribute('data-section') === id) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-            // Close the drawer after selecting a section
-            const drawer = document.getElementById('drawer');
-            drawer.classList.remove('open');
-        }
+    <div class="alert-box">
+        <strong>WARNING: HIGH VOLATILITY DETECTED</strong><br>
+        <span class="blink">>>> INITIATING DISCLAIMER SEQUENCE...</span>
+    </div>
 
-        // Bind click handlers for navigation links inside the drawer
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.drawer-nav .nav-link').forEach((link) => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const id = link.getAttribute('data-section');
-                    showSection(id);
-                });
-            });
-        });
+    <h2>01. Important Notice</h2>
+    <ul>
+        <li>Everything posted is for <strong>satire and entertainment purposes only</strong>.</li>
+        <li>This is NOT financial advice.</li>
+        <li>Always do your own research (DYOR) and consult licensed professionals.</li>
+        <li>We are not responsible for financial losses resulting from shared information.</li>
+    </ul>
 
-        /**
-         * Simple internationalisation support. Translations are stored
-         * in the `translations` object keyed by language code. To add
-         * additional languages, extend this object with the appropriate
-         * keys and translated strings.
-         */
-        const translations = {
-            en: {
-                hero_title: 'Business Mind Alpha',
-                hero_subtitle: 'for cryptocurrency and memecoin investments',
-                btn_x: 'Follow me on X',
-                btn_telegram: 'Join my Telegram Alpha Group',
-                drawer_title: 'Disclaimer',
-                important_notice_title: 'Important Notice',
-                important_notice_1: 'Everything I post should be viewed as satire and entertainment only. This is not financial advice.',
-                important_notice_2: 'You should always do your own research (DYOR) and consult with licensed financial professionals before making any investment decisions.',
-                important_notice_3: 'I am not responsible for any financial losses or gains resulting from any information shared.',
-                high_risk_title: 'High Risk Investment Warning',
-                high_risk_1: 'This disclaimer contains critical risk information that could affect your financial decisions.',
-                market_volatility_title: 'Market Volatility Notice',
-                market_volatility_1: 'Digital assets, including cryptocurrencies, often experience rapid and unpredictable price changes.',
-                market_volatility_2: 'Just because a token did well before doesn’t mean it will again. Some may pump, others may completely crash.',
-                market_volatility_3: 'Always take time to review project fundamentals before putting any money in.',
-                price_fluctuations_title: 'Price Fluctuations',
-                price_fluctuations_1: 'The crypto space is extremely reactive to news, regulations, tech updates, and public sentiment.',
-                price_fluctuations_2: 'Sudden dumps or spikes are common and can lead to serious financial losses.',
-                price_fluctuations_3: 'If you’re unsure, talk to a licensed financial advisor before you invest.',
-                general_risk_title: 'General Risk Disclosure',
-                general_risk_1: 'Crypto carries high risk and comes with no guarantees.',
-                general_risk_2: 'You could lose part or all of your investment.',
-                general_risk_3: 'The industry faces ongoing issues with scams, security exploits, and market manipulation.',
-                general_risk_4: 'Never invest more than you’re prepared to lose, and always DYOR (do your own research).',
-                promo_content_title: 'About Promotional Content',
-                promo_content_1: 'Any marketing, sponsored posts, or token shoutouts should not be taken as endorsements or financial advice.',
-                promo_content_2: 'Evaluate the source and motives behind promotional messages. Do your own digging before trusting anything.',
-                regulatory_factors_title: 'Regulatory Factors',
-                regulatory_factors_1: 'Laws around crypto change depending on where you live.',
-                regulatory_factors_2: 'Understand the rules in your country before buying, selling, or promoting crypto assets.',
-                regulatory_factors_3: 'It’s your responsibility to comply with any regional requirements or reporting obligations.',
-                personal_accountability_title: 'Personal Accountability',
-                personal_accountability_1: 'All decisions to invest are made at your own risk.',
-                personal_accountability_2: 'You’re the only one responsible for the outcome of your actions.',
-                personal_accountability_3: 'It’s smart to assess your own financial situation and risk tolerance before jumping into any project.',
-                no_promises_title: 'No Promises or Profit Guarantees',
-                no_promises_1: 'There’s no promise of gains from anything mentioned here.',
-                no_promises_2: 'Past wins don’t predict future performance — losses are always possible.',
-                no_promises_3: 'Treat all content here as speculative.',
-                not_insider_title: 'Not an Insider',
-                not_insider_1: 'Unless specifically stated, I have no inside connection to the teams or devs behind any project I talk about.',
-                not_insider_2: 'I don’t control project outcomes — I just post and share public info.',
-                education_only_title: 'Education Only',
-                education_only_1: 'Everything shared here is meant for learning and awareness — not professional financial guidance.',
-                education_only_2: 'If you’re making big money decisions, consult someone licensed in finance.',
-                complete_loss_title: 'High Risk of Complete Loss',
-                complete_loss_1: 'Especially with memecoins, losing everything is possible — and often happens.',
-                complete_loss_2: 'These tokens are extremely volatile and often go to zero fast.',
-                complete_loss_3: 'Only use money you’re okay walking away from.',
-                experienced_traders_title: 'Designed for Experienced Traders',
-                experienced_traders_1: 'This page is made for people who already understand how crypto works.',
-                experienced_traders_2: 'If you’re new here, tread carefully and get help from someone with experience.',
-                memecoins_specific_title: 'Memecoins Specific Risk',
-                memecoins_specific_1: 'Meme tokens are built around hype and rarely last long. Most die fast and go to zero.',
-                memecoins_specific_2: 'Project devs can vanish, launch anonymously, or rug at any moment.',
-                memecoins_specific_3: 'Community‑driven hype (especially on Telegram and X) is often exaggerated — don’t take it all literally.',
-                memecoins_specific_4: 'Always approach with skepticism. These tokens are not long‑term financial vehicles — they’re speculative entertainment at best.',
-                final_words_title: 'Final Words',
-                final_words_1: 'Crypto investing carries real risks. Don’t act on emotion or hype.',
-                final_words_2: 'This page exists to help you stay informed — not to replace real financial advice.',
-                final_words_3: 'Come back and review this regularly. The space moves fast, and so do the risks.'
-                ,nav_disclaimer: 'Disclaimer'
-                ,nav_axiom: 'Axiom Exchange'
-                ,menu_title: 'Menu'
-                ,axiom_title: 'Axiom Exchange'
-                ,axiom_p1: 'Axiom Exchange is a full-featured, non-custodial trading platform on Solana that lets you buy, sell and manage your tokens all in one place. With lightning-fast order execution (limit orders land in ≤ 1 block), wallet and Twitter tracking, a migration sniper for migrating tokens, and MEV-resistant infrastructure, Axiom provides deep liquidity and powerful tools for both beginners and pros.'
-                ,axiom_p2: 'You can earn up to 15% APY on idle funds via MarginFi integration and buy crypto without KYC thanks to our partnership with Coinbase. Our three‑tier referral program returns 30% of Axiom’s net fees on direct referrals and gives new users who sign up through my link a 10% discount on trading fees. As an exclusive partner, I can upgrade you to an affiliate account so you can earn up to 30% commission yourself along with higher cashback and fee rebates.'
-                ,axiom_link_text: 'Join Axiom Exchange'
-            },
-            de: {
-                hero_title: 'Business Mind Alpha',
-                hero_subtitle: 'für Kryptowährungs- und Memecoin-Investitionen',
-                btn_x: 'Folge mir auf X',
-                btn_telegram: 'Tritt meiner Telegram-Alpha-Gruppe bei',
-                drawer_title: 'Haftungsausschluss',
-                important_notice_title: 'Wichtiger Hinweis',
-                important_notice_1: 'Alles, was ich poste, sollte als Satire und Unterhaltung betrachtet werden. Dies ist keine Finanzberatung.',
-                important_notice_2: 'Du solltest immer deine eigene Recherche betreiben (DYOR) und lizenzierte Finanzexperten konsultieren, bevor du Anlageentscheidungen triffst.',
-                important_notice_3: 'Ich bin nicht verantwortlich für finanzielle Verluste oder Gewinne, die aus geteilten Informationen resultieren.',
-                high_risk_title: 'Warnung vor hohem Risiko',
-                high_risk_1: 'Dieser Disclaimer enthält wichtige Risikoinformationen, die deine finanziellen Entscheidungen beeinflussen könnten.',
-                market_volatility_title: 'Hinweis zur Marktvolatilität',
-                market_volatility_1: 'Digitale Assets, einschließlich Kryptowährungen, unterliegen oft schnellen und unvorhersehbaren Preisschwankungen.',
-                market_volatility_2: 'Nur weil ein Token zuvor gut performt hat, heißt das nicht, dass es wieder so sein wird. Einige steigen, andere können komplett abstürzen.',
-                market_volatility_3: 'Nimm dir immer Zeit, die Fundamentaldaten eines Projekts zu prüfen, bevor du Geld investierst.',
-                price_fluctuations_title: 'Kursschwankungen',
-                price_fluctuations_1: 'Der Kryptomarkt reagiert extrem auf Nachrichten, Regulierung, technische Updates und öffentliche Stimmung.',
-                price_fluctuations_2: 'Plötzliche Abstürze oder Anstiege sind häufig und können zu erheblichen Verlusten führen.',
-                price_fluctuations_3: 'Wenn du unsicher bist, sprich mit einem lizenzierten Finanzberater, bevor du investierst.',
-                general_risk_title: 'Allgemeine Risikohinweise',
-                general_risk_1: 'Krypto ist hochriskant und bietet keine Garantien.',
-                general_risk_2: 'Du könntest einen Teil oder deine gesamte Investition verlieren.',
-                general_risk_3: 'Die Branche kämpft ständig mit Betrügereien, Sicherheitslücken und Marktmanipulation.',
-                general_risk_4: 'Investiere niemals mehr, als du bereit bist zu verlieren, und betreibe immer deine eigene Recherche.',
-                promo_content_title: 'Über Werbeinhalte',
-                promo_content_1: 'Marketing, gesponserte Beiträge oder Token-Erwähnungen sind keine Empfehlungen oder Finanzberatung.',
-                promo_content_2: 'Bewerte die Quelle und Motive hinter Werbenachrichten. Recherchiere selbst, bevor du etwas glaubst.',
-                regulatory_factors_title: 'Regulatorische Faktoren',
-                regulatory_factors_1: 'Die Gesetze rund um Krypto variieren je nach Region.',
-                regulatory_factors_2: 'Informiere dich über die Regeln in deinem Land, bevor du Krypto kaufst, verkaufst oder bewirbst.',
-                regulatory_factors_3: 'Es liegt in deiner Verantwortung, regionale Anforderungen oder Meldepflichten einzuhalten.',
-                personal_accountability_title: 'Persönliche Verantwortung',
-                personal_accountability_1: 'Alle Investitionsentscheidungen triffst du auf eigenes Risiko.',
-                personal_accountability_2: 'Du allein trägst die Verantwortung für das Ergebnis deiner Handlungen.',
-                personal_accountability_3: 'Es ist klug, deine finanzielle Situation und Risikotoleranz zu prüfen, bevor du in ein Projekt einsteigst.',
-                no_promises_title: 'Keine Gewinnversprechen',
-                no_promises_1: 'Es gibt keine Gewinnversprechen für die hier genannten Inhalte.',
-                no_promises_2: 'Vergangene Erfolge sagen nichts über zukünftige Ergebnisse aus – Verluste sind immer möglich.',
-                no_promises_3: 'Behandle alle Inhalte hier als spekulativ.',
-                not_insider_title: 'Kein Insider',
-                not_insider_1: 'Sofern nicht ausdrücklich erwähnt, habe ich keine interne Verbindung zu den Teams oder Entwicklern der Projekte, über die ich spreche.',
-                not_insider_2: 'Ich kontrolliere keine Projektergebnisse – ich veröffentliche und teile lediglich öffentliche Informationen.',
-                education_only_title: 'Nur zu Bildungszwecken',
-                education_only_1: 'Alles, was hier geteilt wird, dient der Information und dem Lernen – es ist keine professionelle Finanzberatung.',
-                education_only_2: 'Wenn du große Geldentscheidungen triffst, konsultiere jemanden mit Finanzlizenz.',
-                complete_loss_title: 'Hohe Gefahr des Totalverlusts',
-                complete_loss_1: 'Besonders bei Memecoins ist es möglich – und häufig –, dass man alles verliert.',
-                complete_loss_2: 'Diese Token sind extrem volatil und können schnell auf null fallen.',
-                complete_loss_3: 'Nutze nur Geld, auf das du verzichten kannst.',
-                experienced_traders_title: 'Für erfahrene Trader',
-                experienced_traders_1: 'Diese Seite ist für Menschen gemacht, die bereits verstehen, wie Krypto funktioniert.',
-                experienced_traders_2: 'Wenn du neu bist, gehe vorsichtig vor und lass dir von jemand Erfahrenem helfen.',
-                memecoins_specific_title: 'Memecoin-spezifische Risiken',
-                memecoins_specific_1: 'Memetoken basieren auf Hype und halten selten lange. Die meisten sterben schnell und fallen auf null.',
-                memecoins_specific_2: 'Projektentwickler können verschwinden, anonym starten oder jederzeit einen Rugpull machen.',
-                memecoins_specific_3: 'Community-Hype (besonders auf Telegram und X) wird oft übertrieben – nimm nicht alles wörtlich.',
-                memecoins_specific_4: 'Sei immer skeptisch. Diese Token sind keine langfristigen Anlagevehikel – sie sind spekulative Unterhaltung.',
-                final_words_title: 'Abschließende Worte',
-                final_words_1: 'Kryptoinvestitionen bergen reale Risiken. Handle nicht aus Emotion oder Hype.',
-                final_words_2: 'Diese Seite dient dazu, dich zu informieren – sie ersetzt keine echte Finanzberatung.',
-                final_words_3: 'Komm regelmäßig zurück und lies dies erneut. Der Markt bewegt sich schnell, und das gilt auch für die Risiken.'
-                ,nav_disclaimer: 'Disclaimer'
-                ,nav_axiom: 'Axiom Exchange'
-                ,menu_title: 'Menü'
-                ,axiom_title: 'Axiom Exchange'
-                ,axiom_p1: 'Axiom Exchange ist eine voll ausgestattete, nicht-kustodiale Handelsplattform auf Solana, mit der du Token kaufen, verkaufen und verwalten kannst – alles an einem Ort. Dank blitzschneller Auftragsausführung (Limit Orders landen innerhalb von ≤ 1 Block), Wallet- und Twitter-Tracking, einem Migrations-Sniper für migrierende Token und einer MEV-resistenten Infrastruktur bietet Axiom tiefe Liquidität und leistungsstarke Werkzeuge für Anfänger und Profis.'
-                ,axiom_p2: 'Du kannst auf deine ungenutzten Mittel bis zu 15 % APY über die Integration mit MarginFi verdienen und dank unserer Partnerschaft mit Coinbase ohne KYC Krypto kaufen. Unser dreistufiges Empfehlungsprogramm zahlt 30 % der Netto‑Gebühren für direkte Empfehlungen; wer sich über meinen Link registriert, erhält 10 % Rabatt auf die Handelsgebühren. Als exklusiver Partner kann ich dich außerdem zum Affiliate machen, sodass du selbst bis zu 30 % Provision verdienen kannst – mit noch mehr Cashback und Gebührenrabatten.'
-                ,axiom_link_text: 'Axiom Exchange beitreten'
-            }
-        };
+    <h2>02. High Risk Warning</h2>
+    <ul>
+        <li>Digital assets are highly volatile and unpredictable.</li>
+        <li>Past performance does not guarantee future results.</li>
+        <li>Capital is at risk. Total loss is possible.</li>
+    </ul>
 
-        /**
-         * Apply translations to all elements that specify a data‑i18n attribute.
-         * Falls back to English if a translation is missing.
-         */
-        function applyTranslations(lang) {
-            const dict = translations[lang] || translations['en'];
-            document.querySelectorAll('[data-i18n]').forEach((el) => {
-                const key = el.getAttribute('data-i18n');
-                // Use the translation if available, otherwise fall back to English
-                const translation = (dict && dict[key]) || translations['en'][key] || '';
-                el.textContent = translation;
-            });
-        }
-        // Determine the user's preferred language
-        const preferred = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
-        const langCode = preferred.substring(0, 2).toLowerCase();
-        // Apply translations based on detected language
-        applyTranslations(translations[langCode] ? langCode : 'en');
-        // Set the select to the detected language if available
-        const langSelect = document.getElementById('lang-select');
-        if (langSelect) {
-            if (translations[langCode]) {
-                langSelect.value = langCode;
-            }
-            langSelect.addEventListener('change', (e) => {
-                applyTranslations(e.target.value);
-            });
-        }
-    </script>
+    <h2>03. Market Dynamics</h2>
+    <ul>
+        <li>The crypto market reacts violently to news, regulations, and sentiment.</li>
+        <li>Sudden dumps (crashes) and pumps (spikes) are standard operating procedure.</li>
+        <li>If you cannot afford to lose the money, do not deploy it.</li>
+    </ul>
+
+    <h2>04. Memecoin Specifics</h2>
+    <ul>
+        <li>Memecoins are speculative vehicles built on hype.</li>
+        <li>Risk of "Rug Pulls" (devs vanishing) is extreme.</li>
+        <li>99% of these tokens trend towards zero over time.</li>
+        <li>Treat them as a casino, not an investment strategy.</li>
+    </ul>
+
+    <h2>05. No Insider Status</h2>
+    <ul>
+        <li>Unless stated otherwise, we have no connection to project teams.</li>
+        <li>We do not control outcomes. We analyze public data.</li>
+    </ul>
+
+    <h2>06. Personal Accountability</h2>
+    <ul>
+        <li>You are the sole commander of your capital.</li>
+        <li>Decisions to buy or sell are yours alone.</li>
+        <li>Take responsibility for your own risk management.</li>
+    </ul>
+
+    <div class="footer">
+        SECURE CONNECTION ESTABLISHED<br>
+        SESSION ID: <span id="session-id">LOADING...</span><br>
+        &copy; 2026 BUSINESS MIND. ALL RIGHTS RESERVED.
+    </div>
+</div>
+
+<script>
+    // Generate fake session ID for the vibe
+    document.getElementById('session-id').innerText = 'BM-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+</script>
+
 </body>
 </html>
