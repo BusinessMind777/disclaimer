@@ -5,105 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Mind | Systems Online</title>
     <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --text-color: #00ff41;
-            --dim-color: #008f11;
-            --font-stack: 'Courier Prime', 'Courier New', monospace;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-stack);
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Scanlines */
-        body::before {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-        }
-
-        .container {
-            text-align: center;
-            z-index: 1;
-            border: 1px solid var(--dim-color);
-            padding: 40px;
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
-            max-width: 600px;
-            width: 90%;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px var(--text-color);
-        }
-
-        p {
-            color: var(--dim-color);
-            font-size: 1.1em;
-            margin-bottom: 40px;
-        }
-
-        .btn {
-            display: inline-block;
-            border: 1px solid var(--text-color);
-            padding: 15px 30px;
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 15px var(--text-color);
-        }
-
-        .status {
-            margin-top: 30px;
-            font-size: 0.8em;
-            color: var(--dim-color);
-        }
-
-        .blink { animation: blinker 1.5s linear infinite; }
-        @keyframes blinker { 50% { opacity: 0; } }
+        :root { --bg: #0a0a0a; --text: #00ff41; --dim: #008f11; --font: 'Courier Prime', monospace; }
+        body { background: var(--bg); color: var(--text); font-family: var(--font); margin: 0; padding: 20px; }
+        .nav { text-align: right; margin-bottom: 40px; border-bottom: 1px solid var(--dim); padding-bottom: 10px; }
+        .nav a { color: var(--dim); text-decoration: none; margin-left: 20px; font-weight: bold; }
+        .nav a:hover { color: var(--text); }
+        .hero { text-align: center; margin-top: 100px; }
+        h1 { font-size: 3em; letter-spacing: 5px; margin-bottom: 10px; }
+        p { color: var(--dim); font-size: 1.2em; }
+        .btn { border: 1px solid var(--text); padding: 15px 30px; color: var(--text); text-decoration: none; margin: 10px; display: inline-block; transition: 0.3s; }
+        .btn:hover { background: var(--text); color: var(--bg); box-shadow: 0 0 20px var(--text); }
+        .scanlines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%); background-size: 100% 4px; pointer-events: none; z-index: 99; }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>BUSINESS MIND</h1>
-    <p>// SYSTEMS OPERATIONAL //</p>
-
-    <div style="margin: 30px 0;">
-        <a href="disclaimer.html" class="btn">ACCESS DISCLAIMER</a>
-        <!-- <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed;">SENTINEL FEED [LOCKED]</a> -->
+    <div class="scanlines"></div>
+    <div class="nav">
+        <a href="discovery.html">DISCOVERY</a>
+        <a href="about.html">ABOUT</a>
+        <a href="disclaimer.html">DISCLAIMER</a>
     </div>
-
-    <div class="status">
-        <span class="blink">_WAITING FOR INPUT...</span><br>
-        SECURE CHANNEL ESTABLISHED
+    <div class="hero">
+        <h1>BUSINESS MIND</h1>
+        <p>// SYSTEM OPERATIONAL //</p>
+        <br>
+        <a href="https://t.me/Business_Mind_777_bot" class="btn">START FREE TRIAL</a>
+        <a href="discovery.html" class="btn" style="border-color: var(--dim); color: var(--dim);">LEARN MORE</a>
     </div>
-</div>
-
 </body>
 </html>
