@@ -5,32 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discovery | Business Mind</title>
     <style>
-        :root { --bg: #0a0a0a; --text: #00ff41; --dim: #008f11; --font: monospace; }
-        body { background: var(--bg); color: var(--text); font-family: var(--font); padding: 20px; }
-        .nav { border-bottom: 1px solid var(--dim); padding-bottom: 10px; margin-bottom: 20px; text-align: right; }
-        .nav a { color: var(--dim); margin-left: 20px; text-decoration: none; }
-        .card { border: 1px solid var(--dim); padding: 20px; margin: 10px 0; text-align: center; }
-        .btn { border: 1px solid var(--text); padding: 10px; color: var(--text); text-decoration: none; display: inline-block; margin-top: 10px; }
+        :root { --bg: #0a0a0a; --text: #00ff41; --dim: #008f11; --font: 'Courier Prime', monospace; }
+        body { background: var(--bg); color: var(--text); font-family: var(--font); margin: 0; padding: 20px; overflow-x: hidden; }
+        .nav { text-align: right; border-bottom: 1px solid var(--dim); padding-bottom: 10px; margin-bottom: 40px; }
+        .nav a { color: var(--dim); margin-left: 20px; text-decoration: none; font-weight: bold; }
+        .nav a:hover { color: var(--text); }
+        .container { max-width: 1000px; margin: 0 auto; text-align: center; }
+        h1 { font-size: 2em; border-bottom: 1px solid var(--dim); padding-bottom: 10px; margin-bottom: 10px; }
+        h2 { color: #fff; font-size: 1.1em; margin-bottom: 40px; font-weight: normal; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 40px 0; }
+        .card { border: 1px solid var(--dim); padding: 20px; text-align: center; transition: 0.3s; background: rgba(0,0,0,0.5); }
+        .card:hover { border-color: var(--text); box-shadow: 0 0 20px rgba(0, 255, 65, 0.1); transform: translateY(-5px); }
+        .card h3 { color: #fff; margin-top: 0; }
+        .price { font-size: 2.5em; margin: 20px 0; color: var(--text); text-shadow: 0 0 10px var(--text); }
+        .features { text-align: left; margin-bottom: 30px; font-size: 0.9em; line-height: 1.8; padding-left: 10px; }
+        .btn { display: block; border: 1px solid var(--text); padding: 15px; color: var(--text); text-decoration: none; font-weight: bold; text-transform: uppercase; }
         .btn:hover { background: var(--text); color: var(--bg); }
+
+        .how-it-works { text-align: left; margin: 60px auto; max-width: 800px; border: 1px dashed var(--dim); padding: 30px; }
+        .how-it-works h3 { border-bottom: 1px solid var(--dim); padding-bottom: 5px; }
     </style>
 </head>
 <body>
     <div class="nav"><a href="index.html">HOME</a> <a href="about.html">ABOUT</a></div>
-    <h1>// DISCOVERY ENGINE</h1>
-    <div class="card">
-        <h3>FREE</h3>
-        <p>$0 - 3 Scans/Day</p>
-        <a href="https://t.me/Business_Mind_777_bot" class="btn">START</a>
-    </div>
-    <div class="card" style="border-color: var(--text);">
-        <h3>PRO</h3>
-        <p>$40/mo - Unlimited - Realtime</p>
-        <a href="https://t.me/Business_Mind_777_bot" class="btn">UPGRADE</a>
-    </div>
-    <div class="card">
-        <h3>ELITE</h3>
-        <p>$80/mo - Smart Money</p>
-        <a href="https://t.me/Business_Mind_777_bot" class="btn">CONTACT</a>
+    <div class="container">
+        <h1>// DISCOVERY ENGINE</h1>
+        <h2>Real-time Fresh Wallet Detection & Insider Pattern Analysis</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>FREE</h3>
+                <div class="price">$0</div>
+                <div class="features">
+                    > Discovery Feed (30min delay)<br>
+                    > 3 Token Scans / Day<br>
+                    > Basic Risk Alerts
+                </div>
+                <a href="https://t.me/Business_Mind_777_bot" class="btn">START FREE</a>
+            </div>
+            <div class="card" style="border-color: var(--text); box-shadow: 0 0 15px rgba(0,255,65,0.15);">
+                <h3>PRO</h3>
+                <div class="price">$40<span style="font-size:0.4em">/mo</span></div>
+                <div class="features">
+                    > <strong>Real-time</strong> Discovery Feed<br>
+                    > <strong>Unlimited</strong> Token Scans<br>
+                    > Wallet Cluster Analysis<br>
+                    > Priority Alerts
+                </div>
+                <a href="https://t.me/Business_Mind_777_bot" class="btn">UPGRADE TO PRO</a>
+            </div>
+            <div class="card">
+                <h3>ELITE</h3>
+                <div class="price">$80<span style="font-size:0.4em">/mo</span></div>
+                <div class="features">
+                    > Everything in PRO<br>
+                    > Smart Money Tracking<br>
+                    > Custom Alert Rules<br>
+                    > Priority Support
+                </div>
+                <a href="https://t.me/Business_Mind_777_bot" class="btn">CONTACT SALES</a>
+            </div>
+        </div>
+
+        <div class="how-it-works">
+            <h3>HOW IT WORKS:</h3>
+            <p>1. AI scans Solana chain 24/7.<br>
+            2. Detects interesting patterns (Fresh Swarms, Cabals).<br>
+            3. You get real-time alerts in Telegram.<br>
+            4. You decide what to do.</p>
+        </div>
     </div>
 </body>
 </html>
