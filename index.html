@@ -3,67 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Mind | Discovery Engine</title>
+    <title>Business Mind | Alpha Discovery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0a0a0a; --text: #00ff41; --dim: #008f11; --font: 'Courier Prime', monospace; }
-        body { background: var(--bg); color: var(--text); font-family: var(--font); margin: 0; padding: 20px; overflow-x: hidden; }
-        .nav { text-align: right; border-bottom: 1px solid var(--dim); padding-bottom: 10px; margin-bottom: 40px; }
-        .nav a { color: var(--dim); margin-left: 20px; text-decoration: none; font-weight: bold; }
-        .nav a:hover { color: var(--text); }
-        .hero { text-align: center; margin: 60px 0; }
-        h1 { font-size: 2.5em; letter-spacing: 3px; margin-bottom: 10px; text-shadow: 0 0 10px var(--text); }
-        h2 { color: #fff; font-size: 1.2em; margin-bottom: 30px; font-weight: normal; }
-        .explainer { max-width: 700px; margin: 0 auto; border: 1px dashed var(--dim); padding: 20px; color: #ccc; font-size: 0.9em; line-height: 1.6; background: rgba(0, 255, 65, 0.02); }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; margin: 40px auto; }
-        .feat-box { border: 1px solid var(--dim); padding: 15px; text-align: center; }
-        .feat-box h3 { color: #fff; margin-bottom: 5px; }
-        .btn { border: 1px solid var(--text); padding: 15px 30px; color: var(--text); text-decoration: none; margin: 10px; display: inline-block; transition: 0.3s; font-weight: bold; }
-        .btn:hover { background: var(--text); color: var(--bg); box-shadow: 0 0 20px var(--text); }
-        .footer { margin-top: 60px; border-top: 1px solid var(--dim); padding-top: 20px; text-align: center; color: var(--dim); font-size: 0.8em; }
-        .scanlines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%); background-size: 100% 4px; pointer-events: none; z-index: 99; }
+        :root {
+            --bg: #050505;
+            --card: #0f0f0f;
+            --accent: #00f0ff;
+            --accent-glow: rgba(0, 240, 255, 0.2);
+            --text: #e0e0e0;
+            --dim: #666;
+        }
+        
+        * { box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; line-height: 1.5; }
+        
+        /* HEADER */
+        .nav { display: flex; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid #222; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.2em; letter-spacing: -1px; color: #fff; text-transform: uppercase; }
+        .logo span { color: var(--accent); }
+        .nav-links a { color: var(--dim); text-decoration: none; margin-left: 25px; font-size: 0.9em; transition: 0.2s; }
+        .nav-links a:hover { color: #fff; }
+        
+        /* HERO */
+        .hero { text-align: center; padding: 100px 20px; max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 4em; font-weight: 900; line-height: 1.1; margin: 0 0 20px 0; background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p.sub { font-size: 1.2em; color: var(--dim); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .cta-btn { 
+            background: var(--accent); color: #000; padding: 15px 40px; font-weight: 800; text-decoration: none; 
+            border-radius: 4px; display: inline-block; transition: 0.3s; box-shadow: 0 0 30px var(--accent-glow);
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 50px var(--accent-glow); }
+        .secondary-btn { border: 1px solid #333; color: #fff; padding: 15px 30px; text-decoration: none; border-radius: 4px; margin-left: 10px; transition: 0.2s; }
+        .secondary-btn:hover { border-color: #fff; }
+
+        /* LIVE TICKER */
+        .ticker { background: #080808; border-top: 1px solid #222; border-bottom: 1px solid #222; overflow: hidden; white-space: nowrap; padding: 10px 0; margin-top: 50px; }
+        .ticker-content { display: inline-block; animation: scroll 20s linear infinite; font-family: monospace; color: var(--accent); font-size: 0.9em; }
+        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* STATS GRID */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1100px; margin: 80px auto; padding: 0 20px; }
+        .card { background: var(--card); padding: 30px; border-radius: 12px; border: 1px solid #222; transition: 0.3s; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .card h3 { color: #fff; margin-top: 0; font-size: 1.3em; }
+        .card p { color: #888; font-size: 0.95em; }
+        
+        /* PRICING */
+        .pricing { text-align: center; margin: 100px 0; }
+        .price-card { background: #0a0a0a; border: 1px solid #333; display: inline-block; width: 300px; padding: 40px; margin: 20px; border-radius: 16px; vertical-align: top; text-align: left; }
+        .price-card.pro { border-color: var(--accent); box-shadow: 0 0 30px rgba(0, 240, 255, 0.05); }
+        .price-card h2 { color: #fff; margin: 0 0 10px 0; }
+        .price { font-size: 2.5em; font-weight: 900; color: #fff; margin-bottom: 20px; display: block; }
+        .price span { font-size: 0.4em; font-weight: normal; color: #666; }
+        .features-list { list-style: none; padding: 0; margin-bottom: 30px; }
+        .features-list li { margin-bottom: 10px; color: #ccc; font-size: 0.9em; }
+        .features-list li::before { content: "✓"; color: var(--accent); margin-right: 10px; font-weight: bold; }
+        
+        .buy-btn { display: block; text-align: center; background: #fff; color: #000; padding: 12px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: 0.2s; }
+        .pro .buy-btn { background: var(--accent); }
+        .buy-btn:hover { opacity: 0.9; }
+
+        /* FOOTER */
+        .footer { border-top: 1px solid #222; padding: 60px 20px; text-align: center; color: #444; font-size: 0.8em; margin-top: 100px; }
+        .footer a { color: #666; text-decoration: none; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5em; }
+            .nav { padding: 20px; }
+            .price-card { width: 100%; margin: 10px 0; }
+        }
     </style>
 </head>
 <body>
-    <div class="scanlines"></div>
+
     <div class="nav">
-        <a href="discovery.html">DISCOVERY</a>
-        <a href="about.html">ABOUT</a>
-        <a href="disclaimer.html">DISCLAIMER</a>
+        <div class="logo">BUSINESS<span>MIND</span></div>
+        <div class="nav-links">
+            <a href="https://t.me/Business_Mind_Alpha">Channel</a>
+            <a href="https://t.me/Business_Mind_777_bot">Login</a>
+        </div>
     </div>
 
     <div class="hero">
-        <h1>BUSINESS MIND<br>// DISCOVERY ENGINE ONLINE //</h1>
-        <h2>Find Memecoins Before They Pump<br>AI-Powered Fresh Wallet Detection</h2>
-        
-        <div class="explainer">
-            BUSINESS MIND scans Solana tokens 24/7. Detects fresh wallet swarms, insider patterns, coordinated buys. Real-time alerts. You decide what to do.<br><br>
-            Not financial advice. Just data.
+        <h1>UNFAIR ADVANTAGE<br>FOR SOLANA TRADERS</h1>
+        <p class="sub">
+            The AI-powered scanner that detects Insider Cabals, Fresh Wallet Swarms, and 100x Gems before they trend.
+        </p>
+        <a href="https://t.me/Business_Mind_777_bot?start=website" class="cta-btn">START FREE TRIAL</a>
+        <a href="#pricing" class="secondary-btn">VIEW PLANS</a>
+    </div>
+
+    <div class="ticker">
+        <div class="ticker-content">
+            🚀 LATEST WINS: $MOON +148% (12min)  ///  $CHILL +850% (2h)  ///  $PEPE2 +300% (45min)  ///  CABAL DETECTED: $SCAM (Avoided)  ///  SMART MONEY ENTRY: $SOLO  ///
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>⚡ Real-Time Scanner</h3>
+            <p>Our Sentinel Engine monitors Raydium & Pump.fun 24/7. Detects liquidity injections and volume spikes in milliseconds.</p>
+        </div>
+        <div class="card">
+            <h3>🕵️ Smart Money Hunter</h3>
+            <p>We track the wallets that win. When "Hunter-MOON-0217" buys a new token, you get an alert instantly.</p>
+        </div>
+        <div class="card">
+            <h3>🛡️ Cabal Detection</h3>
+            <p>Don't get rugged. Our AI analyzes funding sources to detect developer cabals and coordinated wash trading.</p>
+        </div>
+    </div>
+
+    <div class="pricing" id="pricing">
+        <div class="price-card">
+            <h2>FREE</h2>
+            <span class="price">$0<span>/mo</span></span>
+            <ul class="features-list">
+                <li>Delayed Alerts (15m)</li>
+                <li>Hidden Tickers</li>
+                <li>Basic Risk Check</li>
+                <li>Community Access</li>
+            </ul>
+            <a href="https://t.me/Business_Mind_Alpha" class="buy-btn">JOIN CHANNEL</a>
         </div>
 
-        <div class="features">
-            <div class="feat-box">
-                <h3>DISCOVERY FEED</h3>
-                <p>Real-time token activity detection</p>
-            </div>
-            <div class="feat-box">
-                <h3>PATTERN ANALYSIS</h3>
-                <p>Wallet clusters & insider detection</p>
-            </div>
-            <div class="feat-box">
-                <h3>INSTANT ALERTS</h3>
-                <p>Never miss early opportunities</p>
-            </div>
+        <div class="price-card pro">
+            <h2>PRO</h2>
+            <span class="price">$40<span>/mo</span></span>
+            <ul class="features-list">
+                <li>⚡ <b>Real-Time Alerts</b></li>
+                <li>🔓 <b>Uncensored Tickers</b></li>
+                <li>🛡️ Cabal & Rug Check</li>
+                <li>🔥 Pump.fun Radar</li>
+                <li>📱 Private Bot Access</li>
+            </ul>
+            <a href="https://t.me/Business_Mind_777_bot?start=upgrade" class="buy-btn">UPGRADE NOW</a>
         </div>
-
-        <br>
-        <a href="https://t.me/Business_Mind_777_bot" class="btn">START FREE TRIAL</a>
-        <a href="discovery.html" class="btn" style="border-color: var(--dim); color: var(--dim);">SEE HOW IT WORKS</a>
     </div>
 
     <div class="footer">
-        Trusted by 200+ Solana traders<br>
-        Built by a trader with 2 years experience<br><br>
-        Follow: [Social Icons Placeholder]
+        &copy; 2026 Business Mind. All rights reserved.<br><br>
+        <a href="disclaimer.html">Disclaimer</a> | <a href="about.html">About</a>
     </div>
+
 </body>
 </html>
