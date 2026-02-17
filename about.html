@@ -3,21 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Business Mind</title>
+    <title>Business Mind | About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0a0a0a; --text: #00ff41; --dim: #008f11; --font: monospace; }
-        body { background: var(--bg); color: var(--text); font-family: var(--font); padding: 20px; max-width: 800px; margin: 0 auto; }
-        .nav { border-bottom: 1px solid var(--dim); padding-bottom: 10px; margin-bottom: 20px; text-align: right; }
-        .nav a { color: var(--dim); margin-left: 20px; text-decoration: none; }
+        :root {
+            --bg: #050505;
+            --card: #0f0f0f;
+            --accent: #00f0ff;
+            --text: #e0e0e0;
+            --dim: #666;
+        }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+        .nav { display: flex; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid #222; }
+        .logo { font-weight: 900; color: #fff; text-decoration: none; }
+        .logo span { color: var(--accent); }
+        
+        .content { max-width: 800px; margin: 80px auto; padding: 20px; }
+        h1 { font-size: 3em; margin-bottom: 20px; color: #fff; }
+        p.lead { font-size: 1.3em; color: var(--dim); margin-bottom: 40px; }
+        
+        .timeline { border-left: 2px solid #222; padding-left: 30px; margin-left: 10px; }
+        .milestone { margin-bottom: 40px; position: relative; }
+        .milestone::before { content: ""; position: absolute; left: -36px; top: 5px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+        .milestone h3 { color: #fff; margin: 0 0 5px 0; }
+        
+        .contact { margin-top: 60px; padding: 30px; border: 1px solid #333; border-radius: 12px; background: var(--card); }
+        .contact h3 { color: #fff; margin-top: 0; }
+        
+        a.back { display: inline-block; margin-top: 40px; color: var(--dim); text-decoration: none; border-bottom: 1px solid var(--dim); }
     </style>
 </head>
 <body>
-    <div class="nav"><a href="index.html">HOME</a> <a href="discovery.html">DISCOVERY</a></div>
-    <h1>// MISSION LOG</h1>
-    <p>2 Years in the trenches of Solana Memecoins.</p>
-    <p>I built this tool because I was tired of manually searching for fresh wallets and insider cabals.</p>
-    <p>Business Mind Discovery automates the alpha.</p>
-    <br>
-    <p>CONTACT: @Business_Mind777</p>
+    <div class="nav">
+        <a href="index.html" class="logo">BUSINESS<span>MIND</span></a>
+    </div>
+
+    <div class="content">
+        <h1>ABOUT US</h1>
+        <p class="lead">Built by traders, for traders. No bullshit, just alpha.</p>
+        
+        <p>I started trading Solana Memecoins in 2024. After seeing thousands of rugs, insider cabals, and coordinated dumps, I realized: <b>You can't beat them unless you see what they see.</b></p>
+        
+        <p>Business Mind isn't a "signal group". It's a surveillance system. We track the wallets that win, identify the devs that scam, and deliver the data before the chart pumps.</p>
+
+        <div class="timeline">
+            <div class="milestone">
+                <h3>Phase 1: The Scanner</h3>
+                <p>Developing the Sentinel Engine to detect liquidity injections in milliseconds.</p>
+            </div>
+            <div class="milestone">
+                <h3>Phase 2: Smart Money</h3>
+                <p>Building the database of 500+ "Hunter Wallets" that consistently print 100x gains.</p>
+            </div>
+            <div class="milestone">
+                <h3>Phase 3: Cabal Detection (Live)</h3>
+                <p>Algorithm that traces wallet funding sources to expose developer networks.</p>
+            </div>
+        </div>
+
+        <div class="contact">
+            <h3>CONTACT</h3>
+            <p>Direct Line: <a href="https://t.me/Business_Mind777" style="color:var(--accent)">@Business_Mind777</a></p>
+            <p>Channel: <a href="https://t.me/Business_Mind_Alpha" style="color:var(--accent)">@Business_Mind_Alpha</a></p>
+        </div>
+
+        <a href="index.html" class="back">← Back to Home</a>
+    </div>
 </body>
 </html>
